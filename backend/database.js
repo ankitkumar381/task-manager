@@ -85,9 +85,12 @@ const dbWrapper = {
   // Run a statement (INSERT, UPDATE, DELETE, DDL)
   run(sql, ...params) {
     db.run(sql, params.flat());
-    // Get lastInsertRowid
-    const res = db.exec("SELECT last_insert_rowid() as id");
-    const lastInsertRowid = res[0]?.values[0][0] ?? null;
+    // Use prepare/step to get lastInsertRowid safely — db.exec() auto-commits
+    // open transactions in sql.js, so we must avoid it here.
+    const stmt = db.prepare("SELECT last_insert_rowid() as id");
+    stmt.step();
+    const lastInsertRowid = stmt.getAsObject().id ?? null;
+    stmt.free();
     if (transactionDepth === 0) saveDb();
     return { lastInsertRowid, changes: db.getRowsModified() };
   },
