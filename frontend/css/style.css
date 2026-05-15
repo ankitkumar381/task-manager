@@ -2616,3 +2616,74 @@ body {
     max-width: 360px;
   }
 }
+
+/* ── Theme fixes: back button & dropdowns ─────────────────────────────────── */
+
+/* Back button — replace washed-out white with a tinted ink pill */
+#back-btn.btn-ghost,
+.btn-ghost.icon-only {
+  background: rgba(23, 32, 42, 0.08);
+  border-color: rgba(23, 32, 42, 0.14);
+  color: var(--ink);
+}
+
+#back-btn.btn-ghost:hover,
+.btn-ghost.icon-only:hover {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.28);
+  color: var(--accent);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+}
+
+/* Logout button in navbar — ghost but readable */
+#logout-btn.btn-ghost {
+  background: rgba(23, 32, 42, 0.07);
+  border-color: rgba(23, 32, 42, 0.13);
+  color: var(--muted);
+}
+
+#logout-btn.btn-ghost:hover {
+  background: rgba(229, 72, 77, 0.1);
+  border-color: rgba(229, 72, 77, 0.28);
+  color: var(--rose);
+}
+
+/* Dropdowns — all selects themed to match warm-cream palette */
+select,
+.form-group select,
+.status-select {
+  background: rgba(255, 253, 248, 0.92);
+  border: 1px solid rgba(31, 39, 48, 0.15);
+  border-radius: 10px;
+  color: var(--ink);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2317202a' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 4px 12px rgba(31, 39, 48, 0.06);
+  transition: border-color var(--trans), box-shadow var(--trans);
+}
+
+select:hover,
+.form-group select:hover,
+.status-select:hover {
+  border-color: rgba(37, 99, 235, 0.32);
+}
+
+select:focus,
+.form-group select:focus,
+.status-select:focus {
+  border-color: rgba(37, 99, 235, 0.6);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  outline: none;
+}
+
+/* Status select inside task cards — slightly more compact */
+.status-select {
+  min-height: 36px;
+  font-size: .8rem;
+  border-radius: 8px;
+}
+
