@@ -78,6 +78,8 @@ async function initDb() {
   return db;
 }
 
+let transactionDepth = 0;
+
 // ── Helper wrappers that mimic better-sqlite3 sync API ───────────────────────
 const dbWrapper = {
   // Run a statement (INSERT, UPDATE, DELETE, DDL)
@@ -86,7 +88,7 @@ const dbWrapper = {
     // Get lastInsertRowid
     const res = db.exec("SELECT last_insert_rowid() as id");
     const lastInsertRowid = res[0]?.values[0][0] ?? null;
-    saveDb();
+    if (transactionDepth === 0) saveDb();
     return { lastInsertRowid, changes: db.getRowsModified() };
   },
 
@@ -116,20 +118,28 @@ const dbWrapper = {
   // Execute raw SQL (schema, etc.)
   exec(sql) {
     db.run(sql);
-    saveDb();
+    if (transactionDepth === 0) saveDb();
   },
 
   // Transaction helper
   transaction(fn) {
     return (...args) => {
-      db.run('BEGIN');
+      if (transactionDepth === 0) db.run('BEGIN');
+      transactionDepth++;
       try {
         const result = fn(...args);
-        db.run('COMMIT');
-        saveDb();
+        transactionDepth--;
+        if (transactionDepth === 0) {
+          db.run('COMMIT');
+          saveDb();
+        }
         return result;
       } catch (e) {
-        db.run('ROLLBACK');
+        transactionDepth--;
+        if (transactionDepth === 0) {
+          console.error('Transaction failed, original error:', e);
+          try { db.run('ROLLBACK'); } catch (rollbackErr) { console.error('Rollback failed:', rollbackErr.message); }
+        }
         throw e;
       }
     };

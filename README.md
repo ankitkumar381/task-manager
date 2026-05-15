@@ -3,7 +3,7 @@
 A full-stack collaborative task management web application built with Node.js, Express, SQLite, and Vanilla JavaScript.
 
 ## 🚀 Live Demo
-> Deployed on Railway – [Add your URL after deployment]
+> Deployed on Railway – https://task-manager-production-d505.up.railway.app/
 
 ## ✨ Features
 - **JWT Authentication** – Signup / Login with bcrypt-hashed passwords
@@ -49,44 +49,6 @@ team-task-manager/
 ├── railway.toml
 └── README.md
 ```
-
-## ⚙️ Local Setup
-
-### Prerequisites
-- Node.js 18+
-- npm
-
-### Steps
-```bash
-# 1. Clone the repo
-git clone <your-repo-url>
-cd team-task-manager
-
-# 2. Install backend dependencies
-cd backend
-npm install
-
-# 3. Create .env file
-cp ../.env.example .env
-# Edit .env and set a strong JWT_SECRET
-
-# 4. Start the server
-npm start
-# Or for development with auto-reload:
-npm run dev
-```
-
-Open **http://localhost:5000** in your browser.
-
-## 🚢 Deployment on Railway
-
-1. Push code to a GitHub repository
-2. Go to [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub**
-3. Select your repository
-4. Add environment variables in Railway dashboard:
-   - `JWT_SECRET` = (any long random string)
-   - `NODE_ENV` = `production`
-5. Railway auto-detects `railway.toml` and deploys
 
 ## 🔌 API Reference
 
