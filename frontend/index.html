@@ -3,78 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Team Task Manager – collaborative project and task management for teams." />
-  <title>Team Task Manager – Login</title>
+  <meta name="description" content="WorkSwift - collaborative project and task management for teams." />
+  <title>WorkSwift - Login</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="auth-page">
 
-  <!-- Animated background blobs -->
-  <div class="bg-blobs">
+  <div class="bg-blobs" aria-hidden="true">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
   </div>
 
   <main class="auth-container">
-    <div class="auth-card">
-
-      <!-- Logo -->
+    <section class="auth-card" aria-label="WorkSwift account access">
       <div class="auth-logo">
-        <div class="logo-icon">⚡</div>
-        <h1 class="logo-text">TaskFlow</h1>
-        <p class="logo-sub">Team Task Manager</p>
+        <div class="logo-icon app-mark" aria-hidden="true"></div>
+        <p class="eyebrow">Team workspace</p>
+        <h1 class="logo-text">WorkSwift</h1>
+        <p class="logo-sub">Plan, assign, and move work forward with a cleaner team board.</p>
       </div>
 
-      <!-- Tabs -->
-      <div class="auth-tabs">
-        <button id="tab-login"  class="auth-tab active">Login</button>
-        <button id="tab-signup" class="auth-tab">Sign Up</button>
+      <div class="auth-tabs" role="tablist" aria-label="Authentication options">
+        <button id="tab-login" class="auth-tab active" type="button">Login</button>
+        <button id="tab-signup" class="auth-tab" type="button">Sign Up</button>
       </div>
 
-      <!-- Error message -->
       <div id="error-msg" class="error-banner"></div>
 
-      <!-- Login Form -->
       <form id="login-form" class="auth-form" autocomplete="on">
-        <div class="form-group">
+        <div class="form-group with-icon input-mail">
           <label for="login-email">Email</label>
           <input id="login-email" type="email" placeholder="you@example.com" required autocomplete="email" />
         </div>
-        <div class="form-group">
+        <div class="form-group with-icon input-lock">
           <label for="login-password">Password</label>
-          <input id="login-password" type="password" placeholder="••••••••" required autocomplete="current-password" />
+          <input id="login-password" type="password" placeholder="Password" required autocomplete="current-password" />
         </div>
-        <button type="submit" class="btn-primary full-width" data-label="Login">Login</button>
+        <button type="submit" class="btn-primary full-width" data-label="Login">
+          <span class="btn-icon icon-arrow" aria-hidden="true"></span>
+          Login
+        </button>
       </form>
 
-      <!-- Signup Form -->
       <form id="signup-form" class="auth-form hidden" autocomplete="on">
-        <div class="form-group">
+        <div class="form-group with-icon input-user">
           <label for="signup-name">Full Name</label>
           <input id="signup-name" type="text" placeholder="John Doe" required autocomplete="name" />
         </div>
-        <div class="form-group">
+        <div class="form-group with-icon input-mail">
           <label for="signup-email">Email</label>
           <input id="signup-email" type="email" placeholder="you@example.com" required autocomplete="email" />
         </div>
-        <div class="form-group">
+        <div class="form-group with-icon input-lock">
           <label for="signup-password">Password</label>
           <input id="signup-password" type="password" placeholder="Min. 6 characters" required autocomplete="new-password" />
         </div>
-        <div class="form-group">
+        <div class="form-group with-icon input-lock">
           <label for="signup-password2">Confirm Password</label>
           <input id="signup-password2" type="password" placeholder="Repeat password" required autocomplete="new-password" />
         </div>
-        <button type="submit" class="btn-primary full-width" data-label="Create Account">Create Account</button>
+        <button type="submit" class="btn-primary full-width" data-label="Create Account">
+          <span class="btn-icon icon-plus" aria-hidden="true"></span>
+          Create Account
+        </button>
       </form>
+    </section>
 
-    </div>
+    <aside class="auth-aside auth-showcase" aria-hidden="true">
+      <div class="motion-board">
+        <div class="orbit orbit-one"><span></span></div>
+        <div class="orbit orbit-two"><span></span></div>
+        <div class="pulse-core">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="floating-card float-a">
+          <i></i>
+          <strong>Plan</strong>
+          <span></span>
+        </div>
+        <div class="floating-card float-b">
+          <i></i>
+          <strong>Build</strong>
+          <span></span>
+        </div>
+        <div class="floating-card float-c">
+          <i></i>
+          <strong>Ship</strong>
+          <span></span>
+        </div>
+        <div class="showcase-rail">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </aside>
   </main>
 
-  <script src="/js/api.js"></script>
-  <script src="/js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
 </body>
 </html>
