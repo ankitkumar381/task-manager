@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Team Task Manager – your project dashboard." />
+  <title>Dashboard – TaskFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="app-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="nav-logo">⚡</span>
+      <span class="nav-title">TaskFlow</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-user">👤 <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-ghost">Logout</button>
+    </div>
+  </nav>
+
+  <div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <p class="sidebar-label">Menu</p>
+        <a href="/dashboard.html" class="sidebar-link active">
+          <span class="sidebar-icon">🏠</span> Dashboard
+        </a>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-label">Projects</p>
+        <div id="sidebar-projects" class="sidebar-projects">
+          <!-- dynamic -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Dashboard</h1>
+          <p class="page-subtitle">Overview of all your projects and tasks</p>
+        </div>
+        <button id="create-project-btn" class="btn-primary">+ New Project</button>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="stats-grid">
+        <div class="stat-card card-blue">
+          <div class="stat-icon">📌</div>
+          <div class="stat-body">
+            <span class="stat-label">Total Tasks</span>
+            <span class="stat-value" id="stat-total">—</span>
+          </div>
+        </div>
+        <div class="stat-card card-purple">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-body">
+            <span class="stat-label">In Progress</span>
+            <span class="stat-value" id="stat-progress">—</span>
+          </div>
+        </div>
+        <div class="stat-card card-green">
+          <div class="stat-icon">✅</div>
+          <div class="stat-body">
+            <span class="stat-label">Completed</span>
+            <span class="stat-value" id="stat-done">—</span>
+          </div>
+        </div>
+        <div class="stat-card card-red">
+          <div class="stat-icon">🔴</div>
+          <div class="stat-body">
+            <span class="stat-label">Overdue</span>
+            <span class="stat-value" id="stat-overdue">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts + Recent -->
+      <div class="two-col-grid">
+        <div class="card chart-card">
+          <h2 class="card-title">Tasks Per User</h2>
+          <div class="chart-wrapper">
+            <canvas id="tasks-chart"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <h2 class="card-title">Recent Tasks</h2>
+          <div id="recent-tasks-list" class="recent-list">
+            <p class="no-data">Loading…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="section-header">
+        <h2 class="section-title">My Projects</h2>
+      </div>
+      <div id="project-list" class="projects-grid">
+        <div class="loading-grid">
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Create Project Modal -->
+  <div id="project-modal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>New Project</h2>
+        <button id="proj-modal-close" class="modal-close">✕</button>
+      </div>
+      <form id="project-form">
+        <div class="form-group">
+          <label for="proj-name">Project Name *</label>
+          <input id="proj-name" type="text" placeholder="e.g. Website Redesign" required />
+        </div>
+        <div class="form-group">
+          <label for="proj-desc">Description</label>
+          <textarea id="proj-desc" rows="3" placeholder="What is this project about?"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-ghost" onclick="document.getElementById('project-modal').classList.remove('open')">Cancel</button>
+          <button type="submit" class="btn-primary">Create Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Team Task Manager – collaborative project and task management for teams." />
+  <title>Team Task Manager – Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="auth-page">
+
+  <!-- Animated background blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <main class="auth-container">
+    <div class="auth-card">
+
+      <!-- Logo -->
+      <div class="auth-logo">
+        <div class="logo-icon">⚡</div>
+        <h1 class="logo-text">TaskFlow</h1>
+        <p class="logo-sub">Team Task Manager</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button id="tab-login"  class="auth-tab active">Login</button>
+        <button id="tab-signup" class="auth-tab">Sign Up</button>
+      </div>
+
+      <!-- Error message -->
+      <div id="error-msg" class="error-banner"></div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form" autocomplete="on">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" placeholder="you@example.com" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" placeholder="••••••••" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn-primary full-width" data-label="Login">Login</button>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signup-form" class="auth-form hidden" autocomplete="on">
+        <div class="form-group">
+          <label for="signup-name">Full Name</label>
+          <input id="signup-name" type="text" placeholder="John Doe" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input id="signup-email" type="email" placeholder="you@example.com" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password" placeholder="Min. 6 characters" required autocomplete="new-password" />
+        </div>
+        <div class="form-group">
+          <label for="signup-password2">Confirm Password</label>
+          <input id="signup-password2" type="password" placeholder="Repeat password" required autocomplete="new-password" />
+        </div>
+        <button type="submit" class="btn-primary full-width" data-label="Create Account">Create Account</button>
+      </form>
+
+    </div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>
