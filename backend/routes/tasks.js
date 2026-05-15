@@ -67,14 +67,16 @@ router.put('/:taskId', auth, (req, res) => {
 
   if (isAdmin) {
     const { title, description, due_date, priority, status, assigned_to } = req.body;
-    if (!title) return res.status(400).json({ error: 'Title is required' });
+    // Fall back to existing values — allows status-only updates from the kanban dropdown
+    const titleToUse = title || task.title;
+    if (!titleToUse) return res.status(400).json({ error: 'Title is required' });
     if (status   && !validStatuses.includes(status))     return res.status(400).json({ error: 'Invalid status' });
     if (priority && !validPriorities.includes(priority)) return res.status(400).json({ error: 'Invalid priority' });
 
     db.prepare(`
       UPDATE tasks SET title=?, description=?, due_date=?, priority=?, status=?, assigned_to=? WHERE id=?
     `).run(
-      title,
+      titleToUse,
       description   ?? task.description,
       due_date      ?? task.due_date,
       priority      ?? task.priority,
