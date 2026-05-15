@@ -2617,73 +2617,82 @@ body {
   }
 }
 
-/* ── Theme fixes: back button & dropdowns ─────────────────────────────────── */
+/* ── Theme fixes: back button & dropdowns (dark theme) ────────────────────── */
 
-/* Back button — replace washed-out white with a tinted ink pill */
+/* Back button — subtle dark surface */
 #back-btn.btn-ghost,
 .btn-ghost.icon-only {
-  background: rgba(23, 32, 42, 0.08);
-  border-color: rgba(23, 32, 42, 0.14);
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text, #e8eaf0);
 }
 
 #back-btn.btn-ghost:hover,
 .btn-ghost.icon-only:hover {
-  background: rgba(37, 99, 235, 0.12);
-  border-color: rgba(37, 99, 235, 0.28);
-  color: var(--accent);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+  background: rgba(108, 99, 255, 0.18);
+  border-color: rgba(108, 99, 255, 0.4);
+  color: var(--accent, #6C63FF);
+  box-shadow: 0 6px 18px rgba(108, 99, 255, 0.2);
 }
 
-/* Logout button in navbar — ghost but readable */
+/* Logout button */
 #logout-btn.btn-ghost {
-  background: rgba(23, 32, 42, 0.07);
-  border-color: rgba(23, 32, 42, 0.13);
-  color: var(--muted);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(232, 234, 240, 0.65);
 }
 
 #logout-btn.btn-ghost:hover {
-  background: rgba(229, 72, 77, 0.1);
-  border-color: rgba(229, 72, 77, 0.28);
-  color: var(--rose);
+  background: rgba(239, 83, 80, 0.15);
+  border-color: rgba(239, 83, 80, 0.35);
+  color: #EF5350;
 }
 
-/* Dropdowns — all selects themed to match warm-cream palette */
+/* Dropdowns — dark theme for select elements & the browser popup */
 select,
 .form-group select,
 .status-select {
-  background: rgba(255, 253, 248, 0.92);
-  border: 1px solid rgba(31, 39, 48, 0.15);
+  background: #1e2535;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
-  color: var(--ink);
+  color: #e8eaf0;
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2317202a' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  color-scheme: dark;                /* makes the browser popup dark too */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a0a8b8' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 32px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 4px 12px rgba(31, 39, 48, 0.06);
-  transition: border-color var(--trans), box-shadow var(--trans);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: border-color var(--trans, .2s ease), box-shadow var(--trans, .2s ease);
+}
+
+select option,
+.form-group select option,
+.status-select option {
+  background: #1e2535;
+  color: #e8eaf0;
 }
 
 select:hover,
 .form-group select:hover,
 .status-select:hover {
-  border-color: rgba(37, 99, 235, 0.32);
+  border-color: rgba(108, 99, 255, 0.35);
 }
 
 select:focus,
 .form-group select:focus,
 .status-select:focus {
-  border-color: rgba(37, 99, 235, 0.6);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-color: rgba(108, 99, 255, 0.65);
+  box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   outline: none;
 }
 
-/* Status select inside task cards — slightly more compact */
+/* Status select inside task cards — compact */
 .status-select {
   min-height: 36px;
   font-size: .8rem;
   border-radius: 8px;
+  background-color: #161b27;
 }
 
