@@ -3,45 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Team Task Manager – project board view." />
-  <title>Project – TaskFlow</title>
+  <meta name="description" content="WorkSwift - project board view." />
+  <title>Project - WorkSwift</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="app-page">
 
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-brand">
-      <button id="back-btn" class="btn-ghost icon-only" title="Back to Dashboard">←</button>
-      <span class="nav-logo">⚡</span>
-      <span class="nav-title">TaskFlow</span>
+      <button id="back-btn" class="btn-ghost icon-only" title="Back to Dashboard" aria-label="Back to Dashboard">
+        <span class="mini-icon icon-back" aria-hidden="true"></span>
+      </button>
+      <span class="nav-logo app-mark" aria-hidden="true"></span>
+      <span class="nav-title">WorkSwift</span>
     </div>
     <div class="nav-right">
-      <span class="nav-user">👤 <span id="user-name">User</span></span>
+      <span class="nav-user"><span class="mini-icon icon-user" aria-hidden="true"></span><span id="user-name">User</span></span>
       <button id="logout-btn" class="btn-ghost">Logout</button>
     </div>
   </nav>
 
-  <div class="project-page">
-
-    <!-- Project Header -->
+  <main class="project-page">
     <div class="project-header">
       <div class="project-header-info">
-        <h1 id="proj-title" class="project-h1">Loading…</h1>
+        <p class="eyebrow">Project board</p>
+        <h1 id="proj-title" class="project-h1">Loading...</h1>
         <p id="proj-desc-text" class="project-h1-desc"></p>
       </div>
       <div class="project-header-actions">
-        <button id="manage-members-btn" class="btn-secondary admin-only hidden">👥 Members</button>
-        <button id="add-task-btn"       class="btn-primary admin-only hidden">+ Add Task</button>
+        <button id="manage-members-btn" class="btn-secondary admin-only hidden">
+          <span class="btn-icon icon-team" aria-hidden="true"></span>
+          Members
+        </button>
+        <button id="add-task-btn" class="btn-primary admin-only hidden">
+          <span class="btn-icon icon-plus" aria-hidden="true"></span>
+          Add Task
+        </button>
       </div>
     </div>
 
-    <!-- Kanban Board -->
     <div class="kanban-board">
-
-      <!-- To Do -->
       <div class="kanban-col" data-status="todo">
         <div class="kanban-col-header todo-header">
           <span class="col-dot todo-dot"></span>
@@ -49,11 +52,10 @@
           <span class="col-count" id="count-todo"></span>
         </div>
         <div class="kanban-col-body" id="col-todo">
-          <div class="empty-col">Loading…</div>
+          <div class="empty-col">Loading...</div>
         </div>
       </div>
 
-      <!-- In Progress -->
       <div class="kanban-col" data-status="in_progress">
         <div class="kanban-col-header progress-header">
           <span class="col-dot progress-dot"></span>
@@ -61,11 +63,10 @@
           <span class="col-count" id="count-in-progress"></span>
         </div>
         <div class="kanban-col-body" id="col-in-progress">
-          <div class="empty-col">Loading…</div>
+          <div class="empty-col">Loading...</div>
         </div>
       </div>
 
-      <!-- Done -->
       <div class="kanban-col" data-status="done">
         <div class="kanban-col-header done-header">
           <span class="col-dot done-dot"></span>
@@ -73,19 +74,20 @@
           <span class="col-count" id="count-done"></span>
         </div>
         <div class="kanban-col-body" id="col-done">
-          <div class="empty-col">Loading…</div>
+          <div class="empty-col">Loading...</div>
         </div>
       </div>
-
     </div>
-  </div>
+  </main>
 
-  <!-- ── Task Modal ─────────────────────────────────────────────────────────── -->
   <div id="task-modal" class="modal-overlay">
     <div class="modal modal-wide">
       <div class="modal-header">
-        <h2 id="task-modal-title">New Task</h2>
-        <button id="task-modal-close" class="modal-close">✕</button>
+        <div>
+          <p class="eyebrow">Task details</p>
+          <h2 id="task-modal-title">New Task</h2>
+        </div>
+        <button id="task-modal-close" class="modal-close" aria-label="Close">x</button>
       </div>
       <form id="task-form">
         <div class="form-row">
@@ -96,15 +98,15 @@
           <div class="form-group">
             <label for="task-priority">Priority</label>
             <select id="task-priority">
-              <option value="low">🟢 Low</option>
-              <option value="medium" selected>🟡 Medium</option>
-              <option value="high">🔴 High</option>
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
             </select>
           </div>
         </div>
         <div class="form-group">
           <label for="task-description">Description</label>
-          <textarea id="task-description" rows="3" placeholder="Task details…"></textarea>
+          <textarea id="task-description" rows="3" placeholder="Task details..."></textarea>
         </div>
         <div class="form-row">
           <div class="form-group flex-1">
@@ -114,15 +116,15 @@
           <div class="form-group flex-1">
             <label for="task-status">Status</label>
             <select id="task-status">
-              <option value="todo">📋 To Do</option>
-              <option value="in_progress">⚡ In Progress</option>
-              <option value="done">✅ Done</option>
+              <option value="todo">To Do</option>
+              <option value="in_progress">In Progress</option>
+              <option value="done">Done</option>
             </select>
           </div>
           <div class="form-group flex-1">
             <label for="task-assignee">Assign To</label>
             <select id="task-assignee">
-              <option value="">— Unassigned —</option>
+              <option value="">Unassigned</option>
             </select>
           </div>
         </div>
@@ -134,20 +136,18 @@
     </div>
   </div>
 
-  <!-- ── Member Modal ───────────────────────────────────────────────────────── -->
   <div id="member-modal" class="modal-overlay">
     <div class="modal">
       <div class="modal-header">
-        <h2>Manage Members</h2>
-        <button id="member-modal-close" class="modal-close">✕</button>
+        <div>
+          <p class="eyebrow">Access</p>
+          <h2>Manage Members</h2>
+        </div>
+        <button id="member-modal-close" class="modal-close" aria-label="Close">x</button>
       </div>
 
-      <!-- Current members list -->
-      <div id="members-list" class="members-list">
-        <!-- dynamic -->
-      </div>
+      <div id="members-list" class="members-list"></div>
 
-      <!-- Add member form (admin only) -->
       <div class="admin-only" id="add-member-section">
         <hr class="divider" />
         <h3 class="sub-title">Add Member</h3>
@@ -173,8 +173,8 @@
     </div>
   </div>
 
-  <script src="/js/api.js"></script>
-  <script src="/js/project.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/project.js"></script>
   <script>
     // Wire up task cancel button
     document.getElementById('task-cancel').addEventListener('click', () => {
